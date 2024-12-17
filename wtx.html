@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王廷香你没师德</title>
+    <style>
+        body {
+            font-family: '等线', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 2.5em;  /* 缩小字号 */
+            color: #333;
+            margin-top: 10px;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* 限制最大宽度 */
+            margin: 20px auto;
+        }
+        .container img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;  /* 为图片添加圆角 */
+        }
+        .language-switch {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            animation: fadeIn 0.5s ease;
+        }
+        .popup button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .popup button:hover {
+            background-color: #555;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="language-switch" onclick="showLanguagePopup()">切换语言</div>
+    <img src="your-photo.jpg" alt="王廷香照片">
+    <h1 id="header-text">王廷香你真没师德</h1>
+</div>
+
+<!-- 弹出菜单 -->
+<div class="popup" id="popup">
+    <p>请选择语言：</p>
+    <button onclick="changeLanguage('zh')">中文</button>
+    <button onclick="changeLanguage('ja')">日语</button>
+    <button onclick="changeLanguage('ko')">韩语</button>
+    <button onclick="changeLanguage('en')">英语</button>
+</div>
+
+<script>
+    let language = 'zh';  // 默认语言为中文
+
+    function showLanguagePopup() {
+        const popup = document.getElementById('popup');
+        popup.style.display = 'block';
+    }
+
+    function changeLanguage(lang) {
+        const headerText = document.getElementById('header-text');
+        const popup = document.getElementById('popup');
+        
+        // 根据选择的语言切换内容
+        if (lang === 'zh') {
+            headerText.innerHTML = '王廷香你真没师德';
+        } else if (lang === 'ja') {
+            headerText.innerHTML = '王廷香さん、あなたは本当に師道がない';
+        } else if (lang === 'ko') {
+            headerText.innerHTML = '왕정향, 당신은 정말로 스승의 도리가 없습니다';
+        } else if (lang === 'en') {
+            headerText.innerHTML = 'Wang Tingxiang, you really have no sense of teaching ethics';
+        }
+        
+        // 隐藏弹出菜单
+        popup.style.display = 'none';
+        language = lang;  // 更新当前语言
+    }
+</script>
+
+</body>
+</html>
